@@ -1,6 +1,6 @@
 # FourTopProject
 
-	//Single Lepton Channel Code
+//Single Lepton Channel Code
 
 	#define Events_cxx
 	#include "Events.h"
@@ -128,7 +128,7 @@
 	Muon_number += 1;
 	}
 	}
-}
+	}
 
 		if (elec+muon==1){  // this requires exactly one electron or muon therefore in single lepton channel
 		Long64_t jetnumber =0;  // This condition can be trivially changed if one only wants to look at single electron or single
@@ -616,7 +616,7 @@
 	}
 
 
-	//Code For Combining Two Histograms
+//Code For Combining Two Histograms
 
 	#include <TH2.h>
 	#include <TStyle.h>
@@ -726,7 +726,7 @@
 
 	}
 
-	//Code For Combining Two Histograms into a Signal vs sqrt(Background) graph
+//Code For Combining Two Histograms into a Signal vs sqrt(Background) graph
 
 	#include <TH2.h>
 	#include <TStyle.h>
