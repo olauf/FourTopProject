@@ -1,6 +1,6 @@
 # FourTopProject
 
-Single Lepton Channel Code
+//Single Lepton Channel Code
 
 #define Events_cxx
 #include "Events.h"
@@ -16,29 +16,29 @@ Long64_t nentries = fChain->GetEntriesFast();
 Long64_t nbytes=0,nb=0;
 TH1F*MyHist = new TH1F("MyHist","Events vs H_t",10,2,12);
 Long64_t n = 101; 
-float ne=0; \\ event counter
+float ne=0; // event counter
 Int_t counter = 0;
-float CSVV2[960869] = {}; \\ these arrays will contain the b-jet discrim value for each jet, size is the number of jets in 
-                           \\ data set
+float CSVV2[960869] = {}; // these arrays will contain the b-jet discrim value for each jet, size is the number of jets in 
+                           // data set
 for (Long64_t jentry=0; jentry<nentries;jentry++) {
 	Long64_t ientry = LoadTree(jentry);
 	Long64_t elec =0;
 	Long64_t muon = 0;
 	Long64_t u=0;
-	float SumTrans=0; \\ scalar sum of transverse momentum counter
+	float SumTrans=0; // scalar sum of transverse momentum counter
 	Long64_t p=0;
-	for(Long64_t j=0;j<nJet;++j){         \\ this small loop calculates scalar sum of transverse momentum
+	for(Long64_t j=0;j<nJet;++j){         // this small loop calculates scalar sum of transverse momentum
 	SumTrans = SumTrans+Jet_pt[j];
 	}
-	float x_t=0.988;   \\ these are the tight, medium and loose working points. i denotes the users intermediate value.
-	float x_m=0.93;     \\ these are the working points for the CSVV2 algorithm
-	float x_l=0.67;     \\ THe b denotes that these are the working points for the CSVV2 algorithm
-	float x_i=0.905;    \\ the i is for intermediate working point ( optimised working point at which the third jet is tagged
+	float x_t=0.988;   // these are the tight, medium and loose working points. i denotes the users intermediate value.
+	float x_m=0.93;     // these are the working points for the CSVV2 algorithm
+	float x_l=0.67;     // THe b denotes that these are the working points for the CSVV2 algorithm
+
 	float x_tb = 0.925;
 	float x_mb = 0.69;
 	float x_lb = 0.23;
-	float pt_misselecx=0; \\ These missing transverse momentum variables of electron etc... are used to calculate the 
-	float pt_misselecy=0; \\ sum of missing transverse momentum later
+	float pt_misselecx=0; // These missing transverse momentum variables of electron etc... are used to calculate the 
+	float pt_misselecy=0; // sum of missing transverse momentum later
         float pt_missmuonx=0;	
 	float pt_missmuony=0;
 	float pt_missx=0;
@@ -46,13 +46,13 @@ for (Long64_t jentry=0; jentry<nentries;jentry++) {
 	float pt_miss=0;
 	float pt_misstotx=0;
 	float pt_misstoty=0;
-	float lep_pt =0;  \\ This is used to calculate the sum of lepton momentum  in an event
+	float lep_pt =0;  // This is used to calculate the sum of lepton momentum  in an event
 	Long64_t repeat =0;
 	float Discrim[40]={};
-	float First_Discrim=0; \\ This is the discriminatory value of the b-jet with the highest discriminatory value in an event
-	float Second_Discrim=0; \\ second highest etc...
+	float First_Discrim=0; // This is the discriminatory value of the b-jet with the highest discriminatory value in an event
+	float Second_Discrim=0; // second highest etc...
 	float Third_Discrim = 0;
-	Long64_t T=0; \\ counters for how many b-jets in an event have a discrim val greater than T etc...
+	Long64_t T=0; // counters for how many b-jets in an event have a discrim val greater than T etc...
 	Long64_t M=0;
 	Long64_t L=0;
 	Long64_t mine=0;
@@ -61,8 +61,8 @@ for (Long64_t jentry=0; jentry<nentries;jentry++) {
 	float second_muon=-10;
 	Long64_t Electron_number =0;
 	Long64_t Muon_number =0;
-for (Long64_t Jet =0;Jet<nJet;++Jet) {     \\ This loop finds out if electrons in an event obey the isolation condition 
-		if (Jet_nElectrons[Jet] > 0) {          \\ and momentum condition 
+for (Long64_t Jet =0;Jet<nJet;++Jet) {     // This loop finds out if electrons in an event obey the isolation condition 
+		if (Jet_nElectrons[Jet] > 0) {          // and momentum condition 
 		float I_rel = 0;
 		float pT = 0;
 		for (Long64_t i=0;i<Jet_nElectrons[Jet];++i) {
@@ -96,7 +96,7 @@ Electron_number += 1;
 }
 
 	Long64_t Di_muon =-10;
-for (Long64_t Jet =0;Jet<nJet;++Jet) { \\ this loop finds out if muons in an events obey isolation and momentum conditions
+for (Long64_t Jet =0;Jet<nJet;++Jet) { // this loop finds out if muons in an events obey isolation and momentum conditions
 	if (Jet_nMuons[Jet] > 0) {
 	float I_rel = 0;
 	float pT = 0;
@@ -130,9 +130,9 @@ for (Long64_t Jet =0;Jet<nJet;++Jet) { \\ this loop finds out if muons in an eve
 	}
 }
 
-		if (elec+muon==1){  \\ this requires exactly one electron or muon therefore in single lepton channel
-		Long64_t jetnumber =0;  \\ This condition can be trivially changed if one only wants to look at single electron or single
-		if (elec==1) jetnumber =8;   \\ muon channel.
+		if (elec+muon==1){  // this requires exactly one electron or muon therefore in single lepton channel
+		Long64_t jetnumber =0;  // This condition can be trivially changed if one only wants to look at single electron or single
+		if (elec==1) jetnumber =8;   // muon channel.
 		if (muon==1) jetnumber =7;
 		for (Long64_t l=0;l<nJet;++l){
 		pt_misstotx += Jet_pt[l]*cos(Jet_phi[l]); 
@@ -140,24 +140,24 @@ for (Long64_t Jet =0;Jet<nJet;++Jet) { \\ this loop finds out if muons in an eve
 		}
 		pt_missx = pow(pt_misstotx +pt_misselecx+pt_missmuonx,2);
 		pt_missy = pow(pt_misstoty +pt_misselecy+pt_missmuony,2);      
-		pt_miss = sqrt(pt_missx+pt_missy);  \\ final caluation of missing transverse momentum 
+		pt_miss = sqrt(pt_missx+pt_missy);  // final caluation of missing transverse momentum 
 		if (nJet>= jetnumber){
-		for (Long64_t NumJet= 0;NumJet<nJet;++NumJet) {  \\ this loop stores discriminatory value of a jet and counts how many
-                        counter = counter + 1;    \\ jets pass the jet requirements for your baseline selection
+		for (Long64_t NumJet= 0;NumJet<nJet;++NumJet) {  // this loop stores discriminatory value of a jet and counts how many
+                        counter = counter + 1;    // jets pass the jet requirements for your baseline selection
                         CSVV2[counter] = Jet_btagCSVV2[NumJet];  
                         if (abs(Jet_eta[NumJet])<2.5 && Jet_pt[NumJet] > 30){
                         p+=1;
                         Discrim[NumJet] = CSVV2[counter];
                         }  
                 }
-                for(Long64_t i = 0;i < 40; ++i){   \\ this loop counts how many b-jets pass tight, medium and loose cuts etc..
+                for(Long64_t i = 0;i < 40; ++i){   // this loop counts how many b-jets pass tight, medium and loose cuts etc..
                         if (Discrim[i] > x_l) L+=1;
                         if (Discrim[i] > x_m) M+=1;
                         if (Discrim[i] > x_t) T+=1;
 			if (Discrim[i] >x_i) mine +=1;
                 }
-                for(Long64_t i = 0;i < 40; ++i){    \\ this loop stores which jet has the highest, second and third highest
-                        if(Discrim[39] < Discrim[i]) Discrim[39] = Discrim[i]; \\ discrim val. It can be extended further
+                for(Long64_t i = 0;i < 40; ++i){    // this loop stores which jet has the highest, second and third highest
+                        if(Discrim[39] < Discrim[i]) Discrim[39] = Discrim[i]; // discrim val. It can be extended further
                 }
                 repeat =0;
                 for(Long64_t i = 0;i < 40; ++i){
